@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-display: "Lilita One", "Impact", sans-serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #1c0f3a;
+  --foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #25123f;
+  --popover: #ffffff;
+  --popover-foreground: #25123f;
+  --primary: #d9202c;
+  --primary-foreground: #ffffff;
+  --secondary: #f3eefb;
+  --secondary-foreground: #25123f;
+  --muted: #f3eefb;
+  --muted-foreground: #6b5f82;
+  --accent: #f2b51d;
+  --accent-foreground: #25123f;
+  --destructive: #b91c1c;
+  --border: #e3dbf0;
+  --input: #cfc4e3;
+  --ring: #d9202c;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    background-image: radial-gradient(1200px 600px at 30% 0%, #3a1d7a 0%, transparent 60%);
+    min-height: 100vh;
+  }
+}
+
+/* rim lights blink while the wheel is spinning */
+@keyframes blink { 0%, 100% { opacity: 1 } 50% { opacity: 0.25 } }
+.wheel-spinning .rim-light:nth-child(odd) { animation: blink 0.35s steps(1) infinite; }
+.wheel-spinning .rim-light:nth-child(even) { animation: blink 0.35s steps(1) infinite 0.175s; }
+@media (prefers-reduced-motion: reduce) {
+  .wheel-spinning .rim-light { animation: none !important; }
+}
